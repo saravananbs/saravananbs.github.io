@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saravanan B S - Software Developer Engineer | AI/ML & Full Stack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #fafafa;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: #3b82f6;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-menu li a:hover {
+            color: #3b82f6;
+        }
+
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu li a.active {
+            color: #3b82f6;
+        }
+
+        .nav-menu li a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 120px 0 60px 0; 
+            margin-bottom: 60px;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.025em;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header p {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #3b82f6;
+            padding: 16px 32px;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item:hover {
+            color: #3b82f6;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            scroll-margin-top: 90px; 
+        }
+
+        .section h3 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #3b82f6;
+        }
+
+        .project-card h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 16px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-impact {
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .project-link:hover {
+            color: #1d4ed8;
+        }
+
+        .skills-container {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .skill-category {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 24px;
+        }
+
+        .skill-category:last-child {
+            border-bottom: none;
+        }
+
+        .skill-category h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-list li {
+            background: #f8fafc;
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        .experience-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(8px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .experience-item .company {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            color: #64748b;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .experience-item li::before {
+            content: '•';
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .achievement-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-card h4 {
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-size: 1.125rem;
+        }
+
+        .achievement-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .education-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .education-item h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 16px;
+        }
+
+        .education-item p {
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .education-item ul {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .education-item li {
+            color: #64748b;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .education-item li::before {
+            content: '•';
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .nav-container {
+                padding: 0 16px;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header {
+                padding: 100px 0 60px 0;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header h2 {
+                font-size: 1.25rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Saravanan<span>.</span>dev</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header" id="home">
+            <div class="header-content">
+                <h1>Saravanan B S</h1>
+                <h2>Software Developer Engineer</h2>
+                <p>AI/ML & Full Stack enthusiast with expertise in building scalable, efficient, and user-centric software solutions. Combining strong problem-solving skills with hands-on project implementation to deliver innovative solutions for startups and businesses.</p>
+                
+                <div class="cta-buttons">
+                    <a href="mailto:bssaravanan247@gmail.com?subject=Interview Request - Software Developer Position&body=Hi Saravanan,%0D%0A%0D%0AI'm interested in discussing a software development opportunity with you.%0D%0A%0D%0APlease let me know when you're available for an interview.%0D%0A%0D%0ABest regards," class="btn-primary">💼 Hire Me</a>
+                    <a href="assets/Saravanan BS's Resume.pdf" class="btn-secondary" download>⬇️ Download Resume</a>
+                </div>
+
+                <div class="contact-info">
+                    <a href="mailto:bssaravanan247@gmail.com" class="contact-item">
+                        📧 bssaravanan247@gmail.com
+                    </a>
+                    <a href="https://github.com/saravananbs" target="_blank" class="contact-item">
+                        🐙 GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/saravanan-b-s-83610526a" target="_blank" class="contact-item">
+                        💼 LinkedIn
+                    </a>
+                    <span class="contact-item">📍 India</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="projects">
+            <h3>Featured Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h4>Amazon Web Scraper</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Selenium</span>
+                        <span class="tech-tag">BeautifulSoup</span>
+                    </div>
+                    <div class="project-impact">Extracted product details with ~95% accuracy over 50+ products, demonstrating strong data extraction and automation skills.</div>
+                    <a href="https://github.com/saravananbs/Amazon-web-scrappy" target="_blank" class="project-link">View Project →</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Road Lane Line Detection System</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                    <div class="project-impact">Real-time lane detection for driver assistance systems, showcasing advanced computer vision and real-time processing capabilities.</div>
+                    <a href="https://github.com/saravananbs/Road-Lane-Line-Detection-System" target="_blank" class="project-link">View Project →</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Fashion Recommendation using Deep Learning</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">AI/ML</span>
+                    </div>
+                    <div class="project-impact">Built an intelligent recommendation system for clothing items, demonstrating expertise in deep learning and recommendation algorithms.</div>
+                    <a href="https://github.com/saravananbs/Fashion-Recommendation-using-Deep-Learning" target="_blank" class="project-link">View Project →</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Multilingual Audio File Translator</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Whisper</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                    <div class="project-impact">Developed a translation system for audio files in multiple languages, showcasing expertise in NLP and audio processing.</div>
+                    <a href="https://github.com/saravananbs/Multilingual-audiofile-translator" target="_blank" class="project-link">View Project →</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Number Plate Information Extraction</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">OCR</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                    <div class="project-impact">Built a system for extracting number plate details using advanced object detection and OCR for smart traffic applications.</div>
+                    <a href="https://github.com/saravananbs/Number-Plate-Information-Extraction-using-yolov8" target="_blank" class="project-link">View Project →</a>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Chat Analyzer</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Analytics</span>
+                    </div>
+                    <div class="project-impact">Extracted meaningful insights from chat data including message frequency and word usage patterns for data-driven decision making.</div>
+                    <a href="https://github.com/saravananbs/Chat-Analyser" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="skills">
+            <h3>Technical Skills</h3>
+            <div class="skills-container">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>🖥️ Programming Languages</h4>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>C</li>
+                            <li>JavaScript</li>
+                            <li>TypeScript</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>🤖 AI/ML & Deep Learning</h4>
+                        <ul class="skill-list">
+                            <li>TensorFlow</li>
+                            <li>PyTorch</li>
+                            <li>LangChain</li>
+                            <li>LangGraph</li>
+                            <li>LangSmith</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>🌐 Web Development</h4>
+                        <ul class="skill-list">
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>Express</li>
+                            <li>Flask</li>
+                            <li>Streamlit</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>🗂️ Databases & Tools</h4>
+                        <ul class="skill-list">
+                            <li>MySQL</li>
+                            <li>ChromaDB</li>
+                            <li>Qdrant</li>
+                            <li>FAISS</li>
+                            <li>Docker</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="experience">
+            <h3>Professional Experience</h3>
+            <div class="experience-item">
+                <h4>AI/ML Developer Intern</h4>
+                <div class="company">Next24Tech Technology & Services</div>
+                <ul>
+                    <li>Developed and implemented various AI/ML models for real-world applications</li>
+                    <li>Optimized machine learning pipelines for improved performance and efficiency</li>
+                    <li>Collaborated with cross-functional teams to deliver AI-powered solutions</li>
+                    <li>Gained hands-on experience with production-level AI applications</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h3>Achievements & Competitions</h3>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <h4>KYNNOVATE Hackathon</h4>
+                    <p>Finalist</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>H@CIT</h4>
+                    <p>Top 10 Finalist</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>TCS CodeVita</h4>
+                    <p>Round 2 (Rank 1152)</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>LeetCode</h4>
+                    <p>Knight Badge, Rating 1812</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>CodeChef</h4>
+                    <p>3 Star Rating</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>Codeforces</h4>
+                    <p>Pupil Rating</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="education">
+            <h3>Education</h3>
+            <div class="education-item">
+                <h4>B.Tech in Artificial Intelligence and Data Science</h4>
+                <p>Currently pursuing degree with comprehensive focus on AI/ML and data science fundamentals</p>
+                <ul>
+                    <li>Advanced understanding of machine learning algorithms and statistical methods</li>
+                    <li>Strong foundation in data analysis, visualization, and predictive modeling</li>
+                    <li>Practical experience with real-world AI applications and industry projects</li>
+                    <li>Exposure to cutting-edge technologies in artificial intelligence</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        function toggleMobileMenu() {
+            // This can be expanded later for mobile navigation
+            console.log('Mobile menu toggle clicked');
+        }
+
+        function downloadResume() {
+            const resumeContent = `Saravanan B S
+Software Developer Engineer (AI/ML & Full Stack Enthusiast)
+
+CONTACT INFORMATION
+Email: bssaravanan247@gmail.com
+GitHub: https://github.com/saravananbs
+LinkedIn: https://www.linkedin.com/in/saravanan-b-s-83610526a
+Location: India
+
+PROFESSIONAL SUMMARY
+AI/ML & Full Stack enthusiast with expertise in building scalable, efficient, and user-centric software solutions. Combining strong problem-solving skills with hands-on project implementation to deliver innovative solutions.
+
+TECHNICAL SKILLS
+Programming Languages: Python, Java, C, JavaScript, TypeScript
+AI/ML: TensorFlow, PyTorch, LangChain, LangGraph, LangSmith
+Web Development: React, Node.js, Express, Flask, Streamlit
+Databases: MySQL, ChromaDB, Qdrant, FAISS
+Tools: Docker, Git, Selenium, BeautifulSoup, Whisper, YOLOv8
+
+PROJECTS
+• Amazon Web Scraper: Python, Selenium, BeautifulSoup - 95% accuracy
+• Road Lane Detection: OpenCV, Python - Real-time processing
+• Fashion Recommendation: Deep Learning, TensorFlow - AI-powered system
+• Multilingual Translator: Whisper, Flask - Audio processing
+• Number Plate Extraction: YOLOv8, OCR - Computer vision
+• Chat Analyzer: Python, Data Visualization - Analytics
+
+EXPERIENCE
+AI/ML Developer Intern – Next24Tech Technology & Services
+• Developed AI/ML models and optimized pipelines
+• Implemented production-level AI applications
+
+ACHIEVEMENTS
+• KYNNOVATE Hackathon Finalist
+• H@CIT Top 10 Finalist
+• TCS CodeVita Round 2 (Rank 1152)
+• LeetCode Knight Badge (Rating 1812)
+• CodeChef 3 Star, Codeforces Pupil
+
+EDUCATION
+B.Tech in Artificial Intelligence and Data Science (In Progress)`;
+
+            const blob = new Blob([resumeContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Saravanan_BS_Resume.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>

@@ -1,19 +1,21 @@
 # Personal Portfolio
-
+# Live 
+https://saravananbs.github.io
 ## Overview
 This is a personal portfolio project for a Software Developer Engineer. The portfolio showcases skills, projects, and contact information, providing a comprehensive view of the developer's capabilities and experience.
 
 ## Project Structure
 ```
 personal-portfolio
-├── src
-│   ├── index.html         # Main HTML document for the portfolio
-│   ├── css
-│   │   └── style.css      # Styles for the portfolio (light and dark themes)
-│   ├── js
-│   │   └── theme-toggle.js # JavaScript for theme toggling
-│   └── assets
-│       └── fonts          # Directory for custom fonts
+|
+│── index.html         # Main HTML document for the portfolio
+│── css
+│   └── style.css      # Styles for the portfolio (light and dark themes)
+│── js
+│   └── theme-toggle.js # JavaScript for theme toggling
+│── assets
+│    └── fonts 
+|    └──resume.pdf         # Directory for custom fonts
 ├── README.md              # Documentation for the project
 ```
 
